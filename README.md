@@ -9,10 +9,7 @@ You should be used to this, it's a typical coding question.
 
 The program tells the story of a user visiting a library. They search for a book, rent it, return it and then donate a book.
 
-Nothing thrilling. But the code is badly written, refactor it so it looks like something you'd like to read.
-
-This code is badly written, but it tells a story.
-Do whatever you see fit to make it good.
+The code is badly written in terms of speed, resilience and style. Refactor it so it looks like something you'd like to read.
 
 ## 3. Vue.js
 

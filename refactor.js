@@ -16,7 +16,7 @@ function Library() {
 }
 
 Library.prototype.rentBook = function(bookId) {
-	const book = this.getBook(bookId);
+	const book = this._getBook(bookId);
 	if (book.available) {
 		book.available = false;
 		console.log('Book ' + book.title + ' rented!')
@@ -25,13 +25,17 @@ Library.prototype.rentBook = function(bookId) {
 	}
 }
 
-Library.prototype.getBook = function(bookId) {
-	return this.books.find(b => b.id == bookId);
+Library.prototype._getBook = function(bookId) {
+	for (let i=0; i < this.books.length; i++) {
+		if (this.books[i] === bookId) {
+			return this.books[i];
+		}
+	}
 }
 
 Library.prototype.searchBook = function(search) {
 	var bookId = null;
-	books.forEach(function (book) {
+	this.books.forEach(function (book) {
 		if (book.title === search) {
 			bookId = book.id;
 		}
@@ -46,18 +50,23 @@ Library.prototype.searchBook = function(search) {
 		}
 	})
 	if (bookId) {
-		return this.books.find(b => b.id === bookId);
+		for (var i in this.books) {
+			if (bookId == this.books[i].id) {
+				return this.books[i];
+			}
+		}
 	}
 }
 
 Library.prototype.returnBook = function(bookId) {
-	const rented = this.books.find(b => b.id === bookId);
+	const rented = this._getBook(bookId);
 	rented.available = true
-	console.log('Book ' + book.title + ' returned!')
+	console.log('Book ' + rented.title + ' returned!')
 }
 
 Library.prototype.donateBook = function(book) {
 	this.books.push(book);
+	console.log('Thank you for your donation!')
 }
 
 function tellStroy() {
