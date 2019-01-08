@@ -1,40 +1,38 @@
 function Library() {
-	this.books = [
-		{
+	this.open = true;
+	this.books = [ {
 			id: 1,
-			title: 'Hitchiker guide',
-			author: 'My ass',
+			title: 'The Hitchhicker\'s Guide to the Galaxy',
+			author: 'Douglas Adams',
 			available: true
-		},
+	},
 		{
 			id: 2,
-			title: 'The little prince',
+			title: 'The Little Prince',
 			author: 'Antoine de Saint Exupery',
 			available: true
-		}
-	];
+	}];
 }
 
-Library.prototype.rentBook = function(bookId) {
+Library.prototype.rentBook = function (bookId) {
 	const book = this._getBook(bookId);
 	if (book.available) {
-		book.available = false;
-		console.log('Book ' + book.title + ' rented!')
-	} else {
-		console.log('This book is not available.');
+	   book.available = false;
+		console.log('Book rented: ' + book.title)
 	}
+	else
+		console.log('This book is not available.');
 }
 
-Library.prototype._getBook = function(bookId) {
-	for (let i=0; i < this.books.length; i++) {
-		if (this.books[i] === bookId) {
-			return this.books[i];
-		}
+Library.prototype._getBook = function(bookId, bookAuthor) {
+	for (let i=0; i<this.books.length; i++) {
+		if (this.books[i] === bookId)
+		  return this.books[i];
 	}
-}
+};
 
 Library.prototype.searchBook = function(search) {
-	var bookId = null;
+	var bookId = null, bookName;
 	this.books.forEach(function (book) {
 		if (book.title === search) {
 			bookId = book.id;
@@ -42,12 +40,8 @@ Library.prototype.searchBook = function(search) {
 		if (book.author === search) {
 			bookId = book.id;
 		}
-		if (book.id === search) {
-			bookId = book.id;
-		}
-		if (book.available === search) {
-			bookId = book.id;
-		}
+		if (book.id === search)
+		bookId = book.id;
 	})
 	if (bookId) {
 		for (var i in this.books) {
@@ -57,26 +51,26 @@ Library.prototype.searchBook = function(search) {
 		}
 	}
 }
-
 Library.prototype.returnBook = function(bookId) {
 	const rented = this._getBook(bookId);
 	rented.available = true
-	console.log('Book ' + rented.title + ' returned!')
-}
+	console.log('Book returned: ' + rented.title);
+};
 
 Library.prototype.donateBook = function(book) {
-	this.books.push(book);
-	console.log('Thank you for your donation!')
+  this.books.push(book);
+  console.log('Thank you for your donation!')
 }
 
+tellStroy();
 function tellStroy() {
 	const library = new Library();
 
 	// the user searches a book
-	const bookId = library.searchBook('The little prince')
+	const bookId = library.searchBook('The Little Prince');
 
 	// the user rents the book
-	library.rentBook(bookId)
+	library.rentBook(bookId);
 
 	// the user returns the book
 	library.returnBook(bookId);
@@ -85,7 +79,5 @@ function tellStroy() {
 	library.donateBook({
 		title: 'Les miserables',
 		author: 'Victor Hugo'
-	})
+	});
 }
-
-tellStroy();

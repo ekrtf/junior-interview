@@ -9,7 +9,7 @@ You should be used to this, it's a typical coding question.
 
 The program tells the story of a user visiting a library. They search for a book, rent it, return it and then donate a book.
 
-The code is badly written in terms of resilience, speed and style. Refactor it!
+The code is badly written in terms of resilience, speed and readability. Refactor it into something you would be confortable committing.
 
 ## 3. Vue.js
 

@@ -20,22 +20,7 @@ You can start making comparisons from the point at which both have number values
 */
 
 function crossOvers(pricesOne, pricesTwo) {
-	const results = [];
-
-	let startIndex = 0;
-	while (typeof pricesOne[startIndex] !== 'number' || typeof pricesTwo[startIndex] !== 'number') {
-		startIndex += 1;
-	}
-
-	for (let i in [...Array(pricesOne.length - startIndex + 1).keys()]) {
-		if (pricesOne[i - 1] > pricesTwo[i - 1] && pricesOne[i] < pricesTwo[i]) {
-			results.push([i, 2]);
-		} else if (pricesOne[i - 1] < pricesTwo[i - 1] && pricesOne[i] > pricesTwo[i]) {
-			results.push([i, 1]);
-		}
-	}
-
-	return results;
+	// TODO
 }
 
 
