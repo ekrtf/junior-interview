@@ -27,11 +27,11 @@ function crossOvers(pricesOne, pricesTwo) {
 		startIndex += 1;
 	}
 
-	for (let i in Array(pricesOne.length - startIndex + 1).keys()) {
+	for (let i in [...Array(pricesOne.length - startIndex + 1).keys()]) {
 		if (pricesOne[i - 1] > pricesTwo[i - 1] && pricesOne[i] < pricesTwo[i]) {
 			results.push([i, 2]);
 		} else if (pricesOne[i - 1] < pricesTwo[i - 1] && pricesOne[i] > pricesTwo[i]) {
-			results.append([i, 1]);
+			results.push([i, 1]);
 		}
 	}
 
